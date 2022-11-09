@@ -1,6 +1,11 @@
 package com.krud.tasks.controller;
 
+import com.krud.tasks.domain.Task;
 import com.krud.tasks.domain.TaskDto;
+import com.krud.tasks.mapper.TaskMapper;
+import com.krud.tasks.service.DbService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,31 +15,38 @@ import java.util.List;
 @RequestMapping("/v1/tasks")
 public class TaskController {
 
-    //private TaskMapper taskMapper;
-    //private DbService dbService;
+    private final TaskMapper taskMapper;
+    private final DbService service;
+
+    @Autowired
+    public TaskController(TaskMapper taskMapper, DbService service) {
+        this.taskMapper = taskMapper;
+        this.service = service;
+    }
 
     @GetMapping
-    List<TaskDto> getTasks() {
-        return new ArrayList<>();
+    public List<TaskDto> getTasks() {
+        List<Task> tasks = service.getAllTasks();
+        return taskMapper.mapToTaskDtoList(tasks);
     }
 
     @GetMapping(value = "{taskId}")
-    TaskDto getTask(Long taskId) {
+    public TaskDto getTask(@PathVariable Long taskId) {
         return new TaskDto(1L, "test title", "test_content");
     }
 
     @DeleteMapping
-    void deleteTask(Long taskId) {
+    public void deleteTask(Long taskId) {
 
     }
 
     @PutMapping
-    TaskDto updateTask(TaskDto taskDto) {
+    public TaskDto updateTask(TaskDto taskDto) {
         return new TaskDto(1L, "Edited test title", "Test content");
     }
 
     @PostMapping
-    void createTask(TaskDto taskDto) {
+    public void createTask(TaskDto taskDto) {
 
     }
 
