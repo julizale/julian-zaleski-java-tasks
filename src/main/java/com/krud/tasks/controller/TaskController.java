@@ -5,7 +5,6 @@ import com.krud.tasks.domain.TaskDto;
 import com.krud.tasks.mapper.TaskMapper;
 import com.krud.tasks.service.DbService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +30,9 @@ public class TaskController {
         return ResponseEntity.ok(taskMapper.mapToTaskDto(service.getTask(taskId)));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteTask(@PathVariable Long taskId) {
+    @DeleteMapping(value = "{taskId}")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long taskId) throws TaskNotFoundException {
+        service.deleteById(taskId);
         return ResponseEntity.ok().build();
     }
 
