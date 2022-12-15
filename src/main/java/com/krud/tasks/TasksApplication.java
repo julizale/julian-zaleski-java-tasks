@@ -6,6 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
+//public class TasksApplication extends SpringBootServletInitializer {
 public class TasksApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
@@ -13,8 +14,8 @@ public class TasksApplication extends SpringBootServletInitializer {
 		SpringApplication.run(TasksApplication.class, args);
 	}
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(TasksApplication.class);
-	}
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//		return builder.sources(TasksApplication.class);
+//	}
 }
