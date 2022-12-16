@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping("/v1/tasks")
 @RequiredArgsConstructor
@@ -50,4 +49,5 @@ public class TaskController {
         service.save(task);
         return ResponseEntity.ok().build();
     }
+
 }
