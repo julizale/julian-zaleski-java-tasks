@@ -1,6 +1,6 @@
 package com.krud.tasks.controller;
 
-import com.krud.tasks.client.TrelloClient;
+import com.krud.tasks.trello.client.TrelloClient;
 import com.krud.tasks.domain.CreatedTrelloCard;
 import com.krud.tasks.domain.TrelloBoardDto;
 import com.krud.tasks.domain.TrelloCardDto;

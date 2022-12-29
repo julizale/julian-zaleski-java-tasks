@@ -4,6 +4,7 @@ import com.krud.tasks.domain.CreatedTrelloCard;
 import com.krud.tasks.domain.TrelloBadgesDto;
 import com.krud.tasks.domain.TrelloBoardDto;
 import com.krud.tasks.domain.TrelloCardDto;
+import com.krud.tasks.trello.client.TrelloClient;
 import com.krud.tasks.trello.config.TrelloConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
