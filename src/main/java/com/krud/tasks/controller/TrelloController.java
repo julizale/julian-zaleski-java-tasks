@@ -1,6 +1,6 @@
 package com.krud.tasks.controller;
 
-import com.krud.tasks.trello.client.TrelloClient;
+import com.krud.tasks.service.TrelloService;
 import com.krud.tasks.domain.CreatedTrelloCard;
 import com.krud.tasks.domain.TrelloBoardDto;
 import com.krud.tasks.domain.TrelloCardDto;
@@ -16,15 +16,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TrelloController {
 
-    private final TrelloClient trelloClient;
+    private final TrelloService trelloService;
 
     @GetMapping("boards")
     public ResponseEntity<List<TrelloBoardDto>> getTrelloBoards() {
-        return ResponseEntity.ok(trelloClient.getTrelloBoards());
+        return ResponseEntity.ok(trelloService.fetchTrelloBoards());
     }
 
     @PostMapping("cards")
     public ResponseEntity<CreatedTrelloCard> createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-        return ResponseEntity.ok(trelloClient.createNewCard(trelloCardDto));
+        return ResponseEntity.ok(trelloService.createTrelloCard(trelloCardDto));
     }
 }
