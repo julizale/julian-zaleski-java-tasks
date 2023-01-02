@@ -2,15 +2,11 @@ package com.krud.tasks.scheduler;
 
 import com.krud.tasks.config.AdminConfig;
 import com.krud.tasks.domain.Mail;
-import com.krud.tasks.domain.Task;
-import com.krud.tasks.domain.TaskDto;
 import com.krud.tasks.repository.TaskRepository;
 import com.krud.tasks.service.SimpleEmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -25,11 +21,12 @@ public class EmailScheduler {
     @Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail(){
         long size = taskRepository.count();
+        String taskOrTasks = size != 1 ? " tasks." : " task.";
         simpleEmailService.send(new Mail(
                 adminConfig.getAdminMail(),
                 null,
                 SUBJECT,
-                "Currently, You have " + size + " tasks in database"
+                "Currently in database you got: " + size + taskOrTasks
         ));
     }
 }
