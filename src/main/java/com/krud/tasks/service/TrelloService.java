@@ -1,7 +1,7 @@
 package com.krud.tasks.service;
 
 import com.krud.tasks.config.AdminConfig;
-import com.krud.tasks.domain.CreatedTrelloCard;
+import com.krud.tasks.domain.CreatedTrelloCardDto;
 import com.krud.tasks.domain.Mail;
 import com.krud.tasks.domain.TrelloBoardDto;
 import com.krud.tasks.domain.TrelloCardDto;
@@ -25,8 +25,8 @@ public class TrelloService {
         return trelloClient.getTrelloBoards();
     }
 
-    public CreatedTrelloCard createTrelloCard(TrelloCardDto trelloCardDto){
-        CreatedTrelloCard newCard = trelloClient.createNewCard(trelloCardDto);
+    public CreatedTrelloCardDto createTrelloCard(TrelloCardDto trelloCardDto){
+        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
 
         ofNullable(newCard).ifPresent(card -> simpleEmailService.send(
                 new Mail(
