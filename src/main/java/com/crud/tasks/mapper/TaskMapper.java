@@ -3,8 +3,8 @@ package com.crud.tasks.mapper;
 import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 @Service
 public class TaskMapper {
 
@@ -27,6 +27,12 @@ public class TaskMapper {
     public List<TaskDto> mapToTaskDtoList(final List<Task> taskList) {
         return taskList.stream()
                 .map(this::mapToTaskDto)
+                .toList();
+    }
+
+    public List<Task> mapToTaskList(final List<TaskDto> taskDtoList) {
+        return taskDtoList.stream()
+                .map(this::mapToTask)
                 .toList();
     }
 }
