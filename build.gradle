@@ -24,6 +24,7 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator:3.0.1'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
